@@ -1,6 +1,7 @@
 package basicweb;
 
 
+
 import java.time.Duration;
 
 import org.junit.After;
@@ -11,39 +12,42 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
-public class ElementState {
-  WebDriver driver ;
-  String url;
-  
+public class Implicitwaitdemo {
+WebDriver driver;
+String baseUrl ; 
+	
 	@Before
 	public void setUp() throws Exception {
-		
 		driver = new ChromeDriver();
-		url = "https://www.google.com/";
+		baseUrl = "https://www.letskodeit.com/practice";
+		
+		//Maximize the browsers window
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
 	}
 	
 	@Test
-	public void test() {
+	public void test() throws InterruptedException {
+		driver.get(baseUrl);
+		WebElement  el1 = driver.findElement(By.xpath("//div/a[@href='/login']"));
+		el1.click();
+		Thread.sleep(2000);
+		//driver.navigate().back();
+		
+		driver.findElement(By.id("email")).sendKeys("test123");
 	
-		driver.get(url);
-		WebElement e1 = driver.findElement(By.id("APjFqb"));
-		System.out.println("E1 is enabled : "+ e1.isEnabled());
-		e1.sendKeys("Sumit Talreja mindtree");
-		//Submit the text is very important remember this
-		e1.submit();
+		
+		
 		
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		driver.quit();
 	}
+
 	
-
-
 
 }
