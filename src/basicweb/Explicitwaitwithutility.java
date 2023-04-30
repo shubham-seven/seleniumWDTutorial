@@ -11,12 +11,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import basicweb.Waittypes;
+public class Explicitwaitwithutility {
 
-public class explicitwaitdemo {
-
+	Waittypes wt;
 	WebDriver driver;
 	String baseUrl ; 
 		
@@ -25,6 +25,7 @@ public class explicitwaitdemo {
 			driver = new ChromeDriver();
 			baseUrl = "https://www.letskodeit.com/practice";
 			
+			wt = new Waittypes(driver);
 			//Maximize the browsers window
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -38,11 +39,16 @@ public class explicitwaitdemo {
 			el1.click();
 			Thread.sleep(2000);
 			
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));		
+			//We can use WebDriverWait or generic method called below
+		//	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));		
 			
-			WebElement el2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
-			el2.sendKeys("shubham");
+			//WebElement el2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
+			//el2.sendKeys("shubham");
 			
+			WebElement result = wt.waitforElement(By.id("email"), 5);
+			result.sendKeys("Shubham Trivedi");
+			Thread.sleep(2000);
+			wt.waitForClickableElement(By.linkText("Forgot Password?"), 5);
 			}
 
 		@After
