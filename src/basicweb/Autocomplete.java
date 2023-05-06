@@ -2,7 +2,7 @@ package basicweb;
 
 
 
-import java.net.MulticastSocket;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class Autocomplete {
 		el2.sendKeys("l");
 		Thread.sleep(1000);
 		Thread.sleep(3000);
-		WebElement el3 = driver.findElement(By.xpath("//ul[@class='uitk-action-list no-bullet']/li[3]"));
+		WebElement el3 = driver.findElement(By.xpath("//ul[@class='uitk-action-list no-bullet']/li[2]/div/button[@aria-label='New Delhi National Capital Territory of Delhi, India']"));
 		el3.click();
 		Thread.sleep(5000);
 		String innerHTML = el3.getAttribute("innerHTML");
@@ -55,7 +55,7 @@ public class Autocomplete {
 		
 		List<WebElement> elements = el3.findElements(By.tagName("li"));
 		
-		System.out.println(elements);
+	System.out.println(elements);
 		/*Thread.sleep(5000);
 		WebElement el4 = driver.findElement(By.xpath("//button[@data-day='30']"));
 		el4.click();
@@ -69,7 +69,7 @@ public class Autocomplete {
 	@After
 	public void tearDown() throws Exception {
 		Thread.sleep(2000);
-		//driver.quit();
+		driver.quit();
 	}
 
 
