@@ -75,6 +75,7 @@ public class JavaScriptExecution {
 	   WebElement buttton = (WebElement)jsExecutor.executeScript("return document.getElementById('openwindow');");
 	    jsExecutor.executeScript("arguments[0].click();", buttton);
 	  
+	    //While interacting with elements if you find element is not interactable then use javascript commands
 	}
 
 
