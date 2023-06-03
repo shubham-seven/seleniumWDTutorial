@@ -28,7 +28,10 @@ public class keypresseventsusingactionclass {
 	@Test
 	public void test() {
 		Actions action = new Actions(driver);
+		//Key down for pressing button and Key Up for releasing button
 		action.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+		//We use build method above as we are performing multiple actions
+		//its better to use build method while performing multiple actions
 	}
 	@After
 	public void tearDown() throws Exception {
