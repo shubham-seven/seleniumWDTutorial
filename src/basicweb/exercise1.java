@@ -25,8 +25,7 @@ public class exercise1 {
 	      
 	     WebElement el1 = driver.findElement(By.xpath("//table[@id='product']/tbody/tr[3]/td[3]"));
 	     
-	   
-	   System.out.println(el1.getText());  
+	    System.out.println(el1.getText());  
 	   
 	      driver.close();
 	     
